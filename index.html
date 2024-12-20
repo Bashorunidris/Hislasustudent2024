@@ -6,7 +6,7 @@
     <title>HD - His Database</title>
     <style>
         :root {
-            --primary: #1E90FF;
+            --primary: #2c3e50;
             --secondary: #32CD32;
             --error: #FF6347;
             --bg-light: #F5F5F5;
@@ -33,29 +33,112 @@
             padding: 20px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            animation: slideIn 0.5s ease;
-        }
+       .logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+}
 
-        .logo-circle {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
+.logo-emblem {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
 
-        .logo-circle:hover {
-            transform: rotate(360deg);
-        }
+.logo-circle {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.logo-text {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.orbit {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    border: 2px dashed rgba(255,255,255,0.3);
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+}
+
+.globe {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background: #e74c3c;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #e74c3c;
+    animation: glow 2s ease-in-out infinite;
+}
+
+.logo-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+    background: linear-gradient(45deg, #2c3e50, #3498db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo-subtitle {
+    font-size: 14px;
+    color: #7f8c8d;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 10px #e74c3c; }
+    50% { box-shadow: 0 0 20px #e74c3c; }
+    100% { box-shadow: 0 0 10px #e74c3c; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo-title h1 {
+        font-size: 24px;
+    }
+
+    .logo-subtitle {
+        font-size: 12px;
+    }
+}
+
          .master-auth-container {
     max-width: 500px;
     margin: 40px auto;
@@ -83,7 +166,7 @@
 }
 
 .master-tab.active {
-    background: #4299e1;
+    background: #2c3e50 ;
     color: white;
     border-radius: 10px;
 }
@@ -99,6 +182,7 @@
 }
 
 .student-tabs {
+
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -107,9 +191,9 @@
 
 .tab-btn {
     padding: 12px;
-    border: 2px solid #4299e1;
+    border: 2px solid #2c3e50 ;
     background: transparent;
-    color: #4299e1;
+    color: #2c3e50 ;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
@@ -117,7 +201,7 @@
 }
 
 .tab-btn.active {
-    background: #4299e1;
+    background: #2c3e50 ;
     color: white;
 }
 
@@ -585,7 +669,7 @@
     display: none;
 }
  :root {
-    --primary: #4f46e5;
+    --primary: #2c3e50 ;
     --secondary: #0ea5e9;
     --success: #10b981;
     --warning: #f59e0b;
@@ -1035,16 +1119,197 @@
         font-size: 15px;
     }
 }
+  .delete-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.delete-container {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    padding: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.4s ease;
+}
+
+.delete-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.warning-icon {
+    color: #ef4444;
+    font-size: 48px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.delete-message {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.delete-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.btn-delete {
+    background: #ef4444;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel {
+    background: #e5e7eb;
+    color: #374151;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+  .logout-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 2px solid #104;
+    border-radius: 8px;
+    color: #edd;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #ef4;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.logout-btn i {
+    font-size: 1.1em;
+}
+.form-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.btn-edit, .btn-delete {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s;
+}
+
+.btn-edit {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-delete {
+    background: #ef4444;
+    color: white;
+}
+
+.edit-modal, .confirm-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.form-card {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+}
 
     </style>
 
 </head>
 <body>
     <div class="container">
-        <div class="logo">
-            <div class="logo-circle">HD</div>
-            <h1>His Database</h1>
+       <div class="logo">
+    <div class="logo-emblem">
+        <div class="logo-circle">
+            <span class="logo-text">HD</span>
+            <div class="orbit">
+                <span class="globe"></span>
+            </div>
         </div>
+    </div>
+    <div class="logo-title">
+        <h1>History Database</h1>
+        <span class="logo-subtitle">International Relations Portal</span>
+    </div>
+</div>
+
          </div>
 
         <div class="master-auth-container">
@@ -1056,9 +1321,7 @@
     <!-- HOD Section -->
     <div class="auth-section active" id="hodAuth">
         <div class="auth-container">
-            <div class="auth-header">
-                <h2>HOD Dashboard Access</h2>
-            </div>
+
             <div class="input-group">
                 <input type="email" id="authEmail" placeholder="Admin Email">
             </div>
@@ -1100,10 +1363,13 @@
 </div>
 
         <div id="dashboardContainer" class="hidden">
-            <div class="dashboard-header">
-                <h2>HOD Dashboard</h2>
-                <button onclick="logout()" class="btn btn-outline">Logout</button>
-            </div>
+            <div class="logout-btn">
+               <a href="login.html" class="btn btn-outline logout-btn">
+    <i class="fas fa-sign-out-alt"></i>
+    Logout
+</a>
+
+                </div>
 
             <!-- Form Creation Section -->
             <div class="form-container">
@@ -1189,10 +1455,11 @@
 
 <div class="student-portal hidden" id="studentPortal">
     <!-- Form Access Section -->
-    <button id="logoutBtn" class="logout-btn">
+         <a href="login.html" class="logout-btn" role="button">
     <i class="fas fa-sign-out-alt"></i>
     Logout
-</button>
+</a>
+
 
     <div class="portal-section search-container">
 
@@ -1210,75 +1477,12 @@
         <div id="activeForms" class="forms-grid"></div>
     </div>
 
-    <!-- Document Management -->
-    <div class="portal-section student-storage">
-        <h2>Document Center</h2>
 
-        <!-- Upload Options -->
-        <div class="storage-options">
-            <div class="upload-group">
-                <button onclick="uploadFile()" class="btn btn-upload">
-                    <i class="fas fa-file-pdf"></i>
-                    Upload PDF
-                </button>
-                <span class="upload-info">Max size: 10MB</span>
-            </div>
-
-            <div class="upload-group">
-                <button onclick="capturePhoto()" class="btn btn-capture">
-                    <i class="fas fa-camera"></i>
-                    Take Photo
-                </button>
-                <span class="upload-info">Supported: JPG, PNG</span>
-            </div>
-
-            <div class="note-input-group">
-                <input type="text" placeholder="Add Quick Note" id="noteInput" class="note-input">
-                <button onclick="saveNote()" class="btn btn-note">Save Note</button>
-            </div>
-        </div>
-
-        <!-- Storage Stats -->
-        <div class="storage-stats">
-            <div class="stat-item">
-                <span class="stat-label">Storage Used</span>
-                <span class="stat-value" id="storageUsed">0 MB</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">Documents</span>
-                <span class="stat-value" id="documentCount">0</span>
-            </div>
-        </div>
-
-        <!-- Stored Items Display -->
-        <div class="stored-items-container">
-            <div class="items-header">
-                <h3>My Documents</h3>
-                <div class="view-options">
-                    <button class="btn-view grid-view active">Grid</button>
-                    <button class="btn-view list-view">List</button>
-                </div>
-            </div>
-            <div id="storedItems" class="items-grid"></div>
-        </div>
-
-        <!-- Recent Activity -->
-        <div class="recent-activity">
-            <h3>Recent Activity</h3>
-            <div id="activityLog" class="activity-list"></div>
-        </div>
-    </div>
-
-    <!-- Submission History -->
-    <div class="portal-section submission-history">
-        <h2>Submission History</h2>
-        <div id="submissionRecords" class="records-container"></div>
-    </div>
 </div>
 
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
 
 
    <script>
@@ -1508,8 +1712,7 @@ class StudentAuth {
     }
 }
 
-// Form Sharing Class
-class FormSharing {
+ class FormSharing {
     static generateShareableMessage(form) {
         const date = new Date().toLocaleDateString();
         return `
@@ -1519,11 +1722,39 @@ class FormSharing {
 👨‍🏫 HOD: Tolu
 📅 Created: ${date}
 🔑 Form Code: ${form.uniqueCode}
-
 ✨ Fill your requirements here:
 🌐 app.his.edu/forms
 ━━━━━━━━━━━━━━━
 Use code to access form!`;
+    }
+
+    static copyToClipboard(text) {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                this.showToast('Copied to clipboard!');
+            })
+            .catch(() => {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                this.showToast('Copied to clipboard!');
+            });
+    }
+
+    static showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'share-toast';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.classList.add('fade-out');
+            setTimeout(() => toast.remove(), 300);
+        }, 2000);
     }
 
     static shareViaWhatsApp(form) {
@@ -1535,9 +1766,17 @@ Use code to access form!`;
         const message = encodeURIComponent(this.generateShareableMessage(form));
         window.open(`https://t.me/share/url?url=app.his.edu/forms&text=${message}`);
     }
+
+    static copyFormCode(form) {
+        this.copyToClipboard(form.uniqueCode);
+    }
+
+    static copyFullMessage(form) {
+        this.copyToClipboard(this.generateShareableMessage(form));
+    }
 }
 
-// Student Portal Class
+
 class StudentPortal {
     constructor() {
         this.storage = new StudentStorage();
@@ -1597,7 +1836,7 @@ class StudentPortal {
     }
 }
 
-// HOD Features Class
+
 class HODFeatures {
     constructor() {
         this.polls = [];
@@ -1653,7 +1892,7 @@ class HODFeatures {
     }
 }
 
-// Storage Management Class
+
 class StudentStorage {
     constructor() {
         this.documents = JSON.parse(localStorage.getItem(CONFIG.STORAGE_KEYS.DOCUMENTS)) || {};
@@ -1676,7 +1915,7 @@ class StudentStorage {
     }
 }
 
-// Utility Helpers
+
 const Helpers = {
     generateUniqueCode() {
         const timestamp = Date.now().toString(36);
@@ -1693,7 +1932,7 @@ const Helpers = {
     }
 };
 
-// Event Handlers
+
 function handleAuth() {
     const email = document.getElementById('authEmail').value;
     const password = document.getElementById('authPassword').value;
@@ -1707,40 +1946,210 @@ function handleAuth() {
         Helpers.showToast('Invalid credentials', 'error');
     }
 }
-
-function createForm() {
-    const pin = document.getElementById('formPin').value;
-    const courseName = document.getElementById('courseName').value;
-    const type = document.getElementById('formType').value;
-    const fields = Array.from(document.querySelectorAll('#fieldSelector input:checked'))
-        .map(input => input.value);
-    const autoSave = document.getElementById('autoSave').checked;
+  function createForm() {
+    const formData = {
+        pin: document.getElementById('formPin').value,
+        courseName: document.getElementById('courseName').value,
+        type: document.getElementById('formType').value,
+        fields: Array.from(document.querySelectorAll('#fieldSelector input:checked'))
+            .map(input => input.value),
+        autoSave: document.getElementById('autoSave').checked
+    };
 
     try {
-        const form = db.createForm(pin, courseName, type, fields, autoSave);
+        const form = db.createForm(
+            formData.pin,
+            formData.courseName,
+            formData.type,
+            formData.fields,
+            formData.autoSave
+        );
+
         const message = FormSharing.generateShareableMessage(form);
-
-        const shareContainer = document.createElement('div');
-        shareContainer.className = 'share-buttons';
-        shareContainer.innerHTML = `
-            <h4>Form Created Successfully!</h4>
-            <div class="code-display">Form Code: ${form.uniqueCode}</div>
-            <div class="share-links">
-                <button onclick="copyToClipboard('${message}')" class="share-btn copy">
-                    Copy Message
-                </button>
-                <button onclick="copyToClipboard('${form.uniqueCode}')" class="share-btn copy">
-                    Copy Code
-                </button>
-            </div>
-        `;
-
-        document.querySelector('.form-container').appendChild(shareContainer);
+        displayShareOptions(form, message);
         Helpers.showToast('Form created successfully');
         refreshFormsList();
     } catch (error) {
         Helpers.showToast(error.message, 'error');
     }
+}
+
+function displayShareOptions(form, message) {
+    const shareContainer = document.createElement('div');
+    shareContainer.className = 'share-buttons';
+    shareContainer.innerHTML = `
+        <h4>Form Created Successfully!</h4>
+        <div class="code-display">Form Code: ${form.uniqueCode}</div>
+        <div class="share-links">
+            <button id="copyMessageBtn" class="share-btn copy">
+                <i class="fas fa-copy"></i> Copy Message
+            </button>
+            <button id="copyCodeBtn" class="share-btn copy">
+                <i class="fas fa-key"></i> Copy Code
+            </button>
+            <button id="whatsappShareBtn" class="share-btn whatsapp">
+                <i class="fab fa-whatsapp"></i> Share WhatsApp
+            </button>
+            <button id="telegramShareBtn" class="share-btn telegram">
+                <i class="fab fa-telegram"></i> Share Telegram
+            </button>
+        </div>
+    `;
+
+    document.querySelector('.form-container').appendChild(shareContainer);
+    setupShareButtons(form, message);
+}
+
+function setupShareButtons(form, message) {
+    document.getElementById('copyMessageBtn').addEventListener('click', () => {
+        copyToClipboard(message);
+    });
+
+    document.getElementById('copyCodeBtn').addEventListener('click', () => {
+        copyToClipboard(form.uniqueCode);
+    });
+
+    document.getElementById('whatsappShareBtn').addEventListener('click', () => {
+        window.open(`https://wa.me/?text=${encodeURIComponent(message)}`);
+    });
+
+    document.getElementById('telegramShareBtn').addEventListener('click', () => {
+        window.open(`https://t.me/share/url?url=app.his.edu/forms&text=${encodeURIComponent(message)}`);
+    });
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text)
+        .then(() => Helpers.showToast('Copied to clipboard!'))
+        .catch(() => {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            Helpers.showToast('Copied to clipboard!');
+        });
+}
+
+ function addFormActions(form) {
+    const actionsHtml = `
+        <div class="form-actions">
+            <button onclick="editForm(${form.id})" class="btn-edit">
+                <i class="fas fa-edit"></i> Edit
+            </button>
+            <button onclick="confirmDelete(${form.id})" class="btn-delete">
+                <i class="fas fa-trash"></i> Delete
+            </button>
+        </div>
+    `;
+    return actionsHtml;
+}
+
+function editForm(formId) {
+    const form = db.forms.find(f => f.id === formId);
+    if (!form) return;
+
+    const editModal = document.createElement('div');
+    editModal.className = 'edit-modal';
+    editModal.innerHTML = `
+        <div class="modal-content">
+            <h3>Edit Form</h3>
+            <form id="editFormForm">
+                <input type="text" id="editPin" value="${form.pin}" placeholder="PIN">
+                <input type="text" id="editCourseName" value="${form.courseName}" placeholder="Course Name">
+                <select id="editType">
+                    <option value="assignment" ${form.type === 'assignment' ? 'selected' : ''}>Assignment</option>
+                    <option value="test" ${form.type === 'test' ? 'selected' : ''}>Test</option>
+                </select>
+                <div class="field-selector">
+                    ${form.fields.map(field => `
+                        <label>
+                            <input type="checkbox" value="${field}" checked>
+                            ${field}
+                        </label>
+                    `).join('')}
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-save">Save Changes</button>
+                    <button type="button" onclick="closeModal()" class="btn-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    `;
+
+    document.body.appendChild(editModal);
+
+    document.getElementById('editFormForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        updateForm(formId);
+    });
+}
+
+function updateForm(formId) {
+    const updatedData = {
+        pin: document.getElementById('editPin').value,
+        courseName: document.getElementById('editCourseName').value,
+        type: document.getElementById('editType').value,
+        fields: Array.from(document.querySelectorAll('.field-selector input:checked'))
+            .map(input => input.value)
+    };
+
+    const formIndex = db.forms.findIndex(f => f.id === formId);
+    if (formIndex !== -1) {
+        db.forms[formIndex] = { ...db.forms[formIndex], ...updatedData };
+        db.saveToStorage();
+        refreshFormsList();
+        closeModal();
+        Helpers.showToast('Form updated successfully');
+    }
+}
+
+function confirmDelete(formId) {
+    const confirmModal = document.createElement('div');
+    confirmModal.className = 'confirm-modal';
+    confirmModal.innerHTML = `
+        <div class="modal-content">
+            <h3>Delete Form</h3>
+            <p>Are you sure you want to delete this form? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button onclick="deleteForm(${formId})" class="btn-delete">Delete</button>
+                <button onclick="closeModal()" class="btn-cancel">Cancel</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(confirmModal);
+}
+
+function deleteForm(formId) {
+    db.forms = db.forms.filter(f => f.id !== formId);
+    db.saveToStorage();
+    refreshFormsList();
+    closeModal();
+    Helpers.showToast('Form deleted successfully');
+}
+
+function closeModal() {
+    const modal = document.querySelector('.edit-modal, .confirm-modal');
+    if (modal) {
+        modal.remove();
+    }
+}
+
+function refreshFormsList() {
+    const formsList = document.querySelector('.forms-list');
+    if (!formsList) return;
+
+    formsList.innerHTML = db.forms.map(form => `
+        <div class="form-card">
+            <div class="form-info">
+                <h3>${form.courseName}</h3>
+                <p>Type: ${form.type}</p>
+                <p>Code: ${form.uniqueCode}</p>
+            </div>
+            ${addFormActions(form)}
+        </div>
+    `).join('');
 }
 
 function refreshFormsList() {
@@ -1801,6 +2210,8 @@ function setupEventListeners() {
     });
 }
 
+
+
 function toggleForm(formId) {
     const form = db.forms.find(f => f.id === formId);
     if (form) {
@@ -1810,82 +2221,146 @@ function toggleForm(formId) {
         showToast(`Form ${form.active ? 'unlocked' : 'locked'}`);
     }
 }
+ function initiateExport(formId) {
+    const dateSelectionModal = createDateSelectionModal();
+    document.body.appendChild(dateSelectionModal);
 
-function exportData(formId) {
+    dateSelectionModal.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const selectedDate = getSelectedDate();
+        exportData(formId, selectedDate);
+        dateSelectionModal.remove();
+    });
+}
+
+function exportData(formId, submissionDate) {
     const form = db.forms.find(f => f.id === formId);
-    if (!form) {
-        showToast('Form not found', 'error');
+    if (!form || !form.submissions) {
+        showToast('No data available for export', 'warning');
         return;
     }
 
-    // Create PDF document
+    const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Add header
-    doc.setFontSize(16);
-    doc.text(`${form.courseName} - Submissions Report`, 14, 15);
-    doc.setFontSize(12);
-    doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 14, 25);
+    // Document Header
+    addDocumentHeader(doc, form);
 
-    // Prepare table data
-    const headers = ['S/N', 'Name', 'Matric Number' ];
-    const tableData = form.submissions.map((sub, index) => [
+    // Table Configuration
+   const tableConfig = {
+    headers: ['S/N', 'Name', 'Matric Number', 'Submission Date', 'Signature'],
+    data: form.submissions.map((sub, index) => [
         index + 1,
-        sub.studentName,
-        sub.matricNumber,
+        sub.studentName || 'N/A',
+        sub.matricNumber || 'N/A',
+        submissionDate,
+        '' // Signature line placeholder
+    ]),
+    columnStyles: {
+        4: { cellWidth: 40 } // Width for signature column
+    }
+};
 
-        new Date(sub.timestamp).toLocaleDateString(),
-        sub.status
-    ]);
+    // Generate Table
+    generateTable(doc, tableConfig);
 
-    // Generate table
-    doc.autoTable({
-        head: [headers],
-        body: tableData,
-        startY: 35,
-        styles: {
-            fontSize: 10,
-            cellPadding: 3
-        },
-        headStyles: {
-            fillColor: [63, 81, 181],
-            textColor: 255
-        },
-        alternateRowStyles: {
-            fillColor: [245, 245, 245]
-        }
-    });
-
-    // Add summary
-    const totalSubmissions = form.submissions.length;
-    doc.text(`Total Submissions: ${totalSubmissions}`, 14, doc.lastAutoTable.finalY + 10);
-
-    // Save PDF
-    const fileName = `${form.courseName}_submissions_${Date.now()}.pdf`;
-    doc.save(fileName);
-
-    // Offer additional export options
-    showExportOptions(doc, fileName);
+    // Add Summary and Save
+    finalizePDF(doc, form);
 }
 
-function showExportOptions(doc, fileName) {
+function addDocumentHeader(doc, form) {
+    doc.setFontSize(16);
+    doc.text(`${form.courseName || 'Course'} - Submissions Report`, 15, 15);
+
+    doc.setFontSize(12);
+    doc.text(`Department: ${form.department || 'N/A'}`, 15, 25);
+    doc.text(`Generated: ${new Date().toLocaleDateString()}`, 15, 35);
+}
+
+function generateTable(doc, config) {
+    doc.autoTable({
+        head: [config.headers],
+        body: config.data,
+        startY: 45,
+        margin: { top: 15 },
+        styles: {
+            fontSize: 10,
+            cellPadding: 5,
+            lineWidth: 0.5,
+            lineColor: [0, 0, 0],
+            textColor: [0, 0, 0]
+        },
+        headStyles: {
+            fillColor: [255, 255, 255],
+            textColor: [0, 0, 0],
+            fontStyle: 'bold',
+            lineWidth: 1
+        },
+        bodyStyles: {
+            fillColor: [255, 255, 255]
+        },
+        alternateRowStyles: {
+            fillColor: [255, 255, 255]
+        },
+        didDrawPage: (data) => {
+            doc.setFontSize(10);
+            const pageNumber = `Page ${data.pageNumber} of ${doc.getNumberOfPages()}`;
+            doc.text(pageNumber, data.settings.margin.left, doc.internal.pageSize.height - 10);
+        }
+    });
+}
+
+function finalizePDF(doc, form) {
+    const finalY = doc.lastAutoTable.finalY || 50;
+    doc.text(`Total Submissions: ${form.submissions.length}`, 15, finalY + 10);
+
+    const timestamp = new Date().toISOString().split('T')[0];
+    const fileName = `${form.courseName}_submissions_${timestamp}.pdf`;
+
+    try {
+        doc.save(fileName);
+        showExportSuccess(fileName);
+    } catch (error) {
+        showToast('Export failed. Please try again.', 'error');
+    }
+}
+
+function createDateSelectionModal() {
     const modal = document.createElement('div');
-    modal.className = 'export-modal';
+    modal.className = 'date-selection-modal';
     modal.innerHTML = `
-        <div class="export-options">
-            <h3>Export Options</h3>
-            <button onclick="saveToDevice('${fileName}')" class="btn-export">
-                <i class="fas fa-download"></i> Save to Device
-            </button>
-            <button onclick="saveToGoogleDrive()" class="btn-export">
-                <i class="fab fa-google-drive"></i> Save to Google Drive
-            </button>
-            <button onclick="shareFile('${fileName}')" class="btn-export">
-                <i class="fas fa-share-alt"></i> Share
-            </button>
+        <div class="modal-content">
+            <h3>Select Submission Date</h3>
+            <form>
+                <div class="date-options">
+                    <label>
+                        <input type="radio" name="dateType" value="current" checked>
+                        Use Today's Date (${new Date().toLocaleDateString()})
+                    </label>
+                    <label>
+                        <input type="radio" name="dateType" value="custom">
+                        Custom Date
+                        <input type="date" id="customDate" disabled>
+                    </label>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-export">Generate PDF</button>
+                    <button type="button" class="btn-cancel" onclick="this.closest('.date-selection-modal').remove()">
+                        Cancel
+                    </button>
+                </div>
+            </form>
         </div>
     `;
-    document.body.appendChild(modal);
+    return modal;
+}
+
+function getSelectedDate() {
+    const dateType = document.querySelector('input[name="dateType"]:checked').value;
+    if (dateType === 'current') {
+        return new Date().toLocaleDateString();
+    }
+    return new Date(document.getElementById('customDate').value).toLocaleDateString();
 }
 
 function deleteSubmission(formId, submissionId) {
